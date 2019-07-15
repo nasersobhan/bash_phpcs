@@ -9,7 +9,7 @@ NCL='\033[0m'           # No Color
 phpcsxx(){
         #phpcs '--standard=Drupal' $entry
         cmd="phpcs --standard=Drupal $entry"
-
+        echo -e "$${NCL}"
         eval $cmd
         Extport=$?
         if [[ "$Extport" == 0 ]]
@@ -23,7 +23,7 @@ phpcsxx(){
 }
 walk() {
         local indent="${2:-0}"
-        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory)"
+        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory)${NCL}"
         # If the entry is a file do some operations
         for entry in "$1"/*; do [[ -f "$entry" ]] && phpcsxx "$entry"; done
         
