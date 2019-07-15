@@ -7,6 +7,6 @@ A bash script that runs PHPCS on a Directory and return Error or Just return no 
 * Example in Windows
 ./phpcsx.sh /d/xampp/htdocs/websc/
 
-** Requerments 
+** Requirements 
 PHPCS = https://github.com/squizlabs/PHP_CodeSniffer
 
