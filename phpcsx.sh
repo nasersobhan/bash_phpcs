@@ -7,9 +7,7 @@ YEL='\033[1;33m'        # Yellow
 NCL='\033[0m'           # No Color
 
 phpcsxx(){
-        #phpcs '--standard=Drupal' $entry
         cmd="phpcs --standard=Drupal $entry"
-        #echo -e "$${NCL}"
         eval $cmd
         Extport=$?
         if [[ "$Extport" == 0 ]]
