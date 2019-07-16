@@ -26,8 +26,6 @@ walk() {
         # If the entry is a file do some operations
         for entry in "$1"/*; do [[ -f "$entry" ]] && phpcsxx "$entry"; done
         
-        #for entry in "$1"/*; do phpcsxx "$entry" ; done
-        
         # If the entry is a directory call walk() == create recursion
         for entry in "$1"/*; do [[ -d "$entry" ]] && walk "$entry" $((indent+4)); done
 }
