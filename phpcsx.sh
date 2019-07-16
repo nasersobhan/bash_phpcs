@@ -7,9 +7,7 @@ YEL='\033[1;33m'        # Yellow
 NCL='\033[0m'           # No Color
 
 phpcsxx(){
-        #phpcs '--standard=Drupal' $entry
         cmd="phpcs --standard=Drupal $entry"
-        echo -e "$${NCL}"
         eval $cmd
         Extport=$?
         if [[ "$Extport" == 0 ]]
@@ -23,7 +21,7 @@ phpcsxx(){
 }
 walk() {
         local indent="${2:-0}"
-        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory)${NCL}"
+        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory) ${NCL}"
         # If the entry is a file do some operations
         for entry in "$1"/*; do [[ -f "$entry" ]] && phpcsxx "$entry"; done
         
@@ -36,4 +34,4 @@ walk() {
 # If the path is empty use the current, otherwise convert relative to absolute; Exec walk()
 [[ -z "${1}" ]] && ABS_PATH="${PWD}" || cd "${1}" && ABS_PATH="${PWD}"
 walk "${ABS_PATH}"      
-echo                    
+echo      
