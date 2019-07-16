@@ -7,21 +7,24 @@ YEL='\033[1;33m'        # Yellow
 NCL='\033[0m'           # No Color
 
 phpcsxx(){
+        #phpcs '--standard=Drupal' $entry
         cmd="phpcs --standard=Drupal $entry"
+        #echo -e "$${NCL}"
         eval $cmd
         Extport=$?
         if [[ "$Extport" == 0 ]]
         then
                 echo -e "${GRE}No Error: phpcs --standard=Drupal $entry${NCL}"  
         else
-                echo -e "${RED}-----------------------------------------------------------------------------------------------------------------------------------------------------${NCL}" 
+                echo -e "${RED}---------------------------------------------------------------------------${NCL}" 
                 echo -e "${NCL}^ Please Fix above ${RED}Errors${NCL}: $entry ^" 
-                echo -e "${RED}-----------------------------------------------------------------------------------------------------------------------------------------------------${NCL}" 
+                echo -e "${RED}---------------------------------------------------------------------------${NCL}" 
         fi
 }
 walk() {
         local indent="${2:-0}"
-        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory) ${NCL}"
+        printf "\n${YEL}%s${NCL}\n\n" "$1 (Directory)"
+        echo -e "${NCL}"
         # If the entry is a file do some operations
         for entry in "$1"/*; do [[ -f "$entry" ]] && phpcsxx "$entry"; done
         
