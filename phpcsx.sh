@@ -32,5 +32,8 @@ walk() {
 
 # If the path is empty use the current, otherwise convert relative to absolute; Exec walk()
 [[ -z "${1}" ]] && ABS_PATH="${PWD}" || cd "${1}" && ABS_PATH="${PWD}"
-walk "${ABS_PATH}"      
+walk "${ABS_PATH}"
+# return the summary
+cmdx="phpcs --standard=Drupal --report=summary ${ABS_PATH}" 
+eval $cmdx
 echo      
