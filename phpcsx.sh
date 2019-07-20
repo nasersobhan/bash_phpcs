@@ -7,7 +7,7 @@ YEL='\033[1;33m'        # Yellow
 NCL='\033[0m'           # No Color
 
 phpcsxx(){
-        #phpcs '--standard=Drupal' $entry
+        #check the file Extention
         if [[ $entry == *.php ]] || [[ $entry == *.module ]]
         then
                 cmd="phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt,md $entry"
